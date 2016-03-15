@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  EHLoginViewController.h
 //  Easy Hire
 //
 //  Created by Prasanna Ramachandra Aithal on 9/5/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface EHLoginViewController : UIViewController
 
 @end
-

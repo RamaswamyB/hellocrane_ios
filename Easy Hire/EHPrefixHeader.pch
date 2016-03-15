@@ -1,0 +1,42 @@
+//
+//  EHPrefixHeader.pch
+//  Easy Hire
+//
+//  Created by Prasanna on 15/10/15.
+//  Copyright © 2015 Prasanna Ramachandra Aithal. All rights reserved.
+//
+
+#ifndef EHPrefixHeader_pch
+#define EHPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "EHAlertPromptHelper.h"
+#import "MBProgressHUD.h"
+#import "NSUserDefaults+EHHelper.h"
+#import "EHConstant.h"
+#import "EHProgressLoader.h"
+#import "EHValidateWrapper.h"
+
+// Returns weak pointer of the passed argument
+#define weakify(var) __weak typeof(var) EHWeak_##var = var;
+
+// Returns strong pointer of the passed argument
+#define strongify(var) \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wshadow\"") \
+__strong typeof(var) var = EHWeak_##var; \
+_Pragma("clang diagnostic pop")
+
+// Returns the main queue
+#define GET_ASYNC_MAIN_QUEUE(...) dispatch_async(dispatch_get_main_queue(), ^{ __VA_ARGS__ })
+
+#if DEBUG
+#define EHDebugLog(fmt, ...) NSLog((@"%s [Line %d] \n" fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define EHDebugLog(...) /* Nothing */
+#endif
+
+
+#endif /* EHPrefixHeader_pch */
